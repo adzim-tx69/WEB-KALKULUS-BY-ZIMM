@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kalkulator Titik Diferensial + Materi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="badge">KALKULUS</div>
+        <div class="title">Kalkulator + Materi</div>
+      </div>
+      <div class="links">
+        <a href="#materi">Materi</a>
+        <a href="#alat">Kalkulator</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Materi -->
+    <section id="materi" class="card">
+      <div class="section-title">Materi ringkas: Turunan, Limit, dan Integral</div>
+
+      <details class="accordion" open>
+        <summary>Turunan — definisi, aturan, contoh</summary>
+        <div class="accordion-body">
+          <p class="muted">Turunan mengukur laju perubahan fungsi: <code>f'(x)=lim_{h→0} (f(x+h)-f(x))/h</code>.</p>
+          <h4 class="subheading">Aturan dasar</h4>
+          <ul class="bullets">
+            <li>Const: (c)' = 0</li>
+            <li>Pangkat: (x^n)' = n x^(n-1)</li>
+            <li>Produk: (uv)' = u'v + uv'</li>
+            <li>Rantai: (f(g(x)))' = f'(g(x))·g'(x)</li>
+            <li>Trigonometri: (sin x)' = cos x; (cos x)' = -sin x</li>
+          </ul>
+
+          <h4 class="subheading">Contoh</h4>
+          <ul class="bullets">
+            <li>
+              f(x) = x^3 - 2x
+              <div class="example-controls">
+                <button class="example-btn" data-expr="x^3 - 2*x" data-xmin="-5" data-xmax="5" data-samples="400" data-target="0">Lihat contoh di kalkulator</button>
+              </div>
+            </li>
+            <li>
+              f(x) = sin(x^2)
+              <div class="example-controls">
+                <button class="example-btn" data-expr="sin(x^2)" data-xmin="-4" data-xmax="4" data-samples="600" data-target="0">Lihat contoh di kalkulator</button>
+              </div>
+            </li>
+            <li>
+              f(x) = x*exp(x)
+              <div class="example-controls">
+                <button class="example-btn" data-expr="x*exp(x)" data-xmin="-2" data-xmax="4" data-samples="600" data-target="0">Lihat contoh di kalkulator</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary>Limit — definisi, teknik, contoh</summary>
+        <div class="accordion-body">
+          <p class="muted">Limit adalah perilaku fungsi saat x mendekati nilai tertentu. Teknik: substitusi, faktorisasi, L'Hôpital.</p>
+          <h4 class="subheading">Contoh</h4>
+          <ul class="bullets">
+            <li>
+              lim x→0 (sin x)/x = 1
+              <div class="example-controls">
+                <button class="example-btn" data-expr="sin(x)/x" data-xmin="-1" data-xmax="1" data-samples="400" data-target="1">Lihat contoh</button>
+              </div>
+            </li>
+            <li>
+              lim x→0 (sqrt(x+1)-1)/x = 1/2
+              <div class="example-controls">
+                <button class="example-btn" data-expr="(sqrt(x+1)-1)/x" data-xmin="-0.5" data-xmax="0.5" data-samples="400" data-target="0.5">Lihat contoh</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary>Integral — definisi, aturan, contoh</summary>
+        <div class="accordion-body">
+          <p class="muted">Integral mengukur akumulasi/luas: ∫_a^b f(x) dx = F(b)-F(a) jika F' = f.</p>
+          <h4 class="subheading">Contoh</h4>
+          <ul class="bullets">
+            <li>∫_0^1 x^2 dx = 1/3
+              <div class="example-controls">
+                <button class="example-btn" data-expr="x^2" data-xmin="0" data-xmax="1" data-samples="400" data-target="0.3333">Lihat contoh</button>
+              </div>
+            </li>
+            <li>∫ sin x dx = -cos x
+              <div class="example-controls">
+                <button class="example-btn" data-expr="sin(x)" data-xmin="0" data-xmax="6.283185" data-samples="600" data-target="0">Lihat contoh</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+ 
+
+    <!-- Kalkulator -->
+    <section id="alat" class="card" style="margin-top:18px">
+      <div class="section-title">Kalkulator titik diferensial</div>
+      <div class="grid-2">
+        <div>
+          <label>f(x) =</label>
+          <input id="expr" class="input" value="sin(x) - cos(2*x)" placeholder="contoh: sin(x) - cos(2*x)" />
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Rentang x min</label>
+            <input id="xmin" class="input" type="number" value="-20" />
+          </div>
+          <div>
+            <label>Rentang x max</label>
+            <input id="xmax" class="input" type="number" value="20" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Sampel</label>
+            <input id="samples" class="input" type="number" value="800" />
+          </div>
+          <div>
+            <label>Mode</label>
+            <select id="mode" class="input">
+              <option value="target">Cari nilai (target)</option>
+              <option value="zeros">Deteksi Nol (akar f(x))</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Target f(x)</label>
+            <input id="target" class="input" type="number" value="-2" />
+          </div>
+          <div style="display:flex; align-items:flex-end;">
+            <button id="btn" class="btn">Pilih & Hitung Titik</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="result" id="status"></div>
+    </section>
+
+    <!-- Visual & points -->
+    <section class="content grid-2" style="margin-top:18px">
+      <div class="card">
+        <div class="section-title">Grafik f(x) dan f′(x)</div>
+        <div class="muted" id="symbolic">Turunan simbolik: —</div>
+        <div style="margin-top:10px; position:relative;">
+          <canvas id="canvas"></canvas>
+          <div id="tooltip" class="tooltip" style="display:none;"></div>
+        </div>
+        <div class="chips" style="margin-top:10px">
+          <div class="chip">Hover kanvas untuk melihat f(x) & f′(x)</div>
+          <div class="chip">Pilih mode "Deteksi Nol" untuk mencari akar</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Titik Ditemukan</div>
+        <ul id="points" class="point-list"></ul>
+      </div>
+    </section>
+
+    <footer>© 2025 — BY ZIMMMM</footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
